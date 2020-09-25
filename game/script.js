@@ -123,10 +123,8 @@ function startNewGame()
   var randomNumber = 0;
   var count = 0;
   moves = 0;
-  rows =3;
-  columns =3;
-//   rows = localStorage.getItem('size');
-//   columns =localStorage.getItem('size');
+  rows = localStorage.getItem('size');
+  columns =localStorage.getItem('size');
   textMoves.innerHTML = moves;
   size = new Array(rows);
   for (var i = 0; i < rows; i++)
