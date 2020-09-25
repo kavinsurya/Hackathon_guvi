@@ -28,30 +28,39 @@ icon.className = 'fa fa-bars';
 a3.append(icon)
 
 
+
+
+
+header.append(h1, a2, a1, a3);
+
+//container
+var container =document.createElement('div');
+container.className ='container';
+var table =document.createElement('table');
+table.id ='table';
+
+var div1 =document.createElement('div');
+
+
 var a4 = document.createElement('p');
-a4.setAttribute('style', 'float:right')
+a4.innerText ='Time:'
+a4.className ='para'
 var span = document.createElement('span');
 span.id = 'time';
 a4.append(span)
 
-
-header.append(h1, a2, a1, a3, a4);
-
-//container
-var container =document.createElement('div');
-var table =document.createElement('table');
-table.id ='table';
-
+var a5 = document.createElement('p');
+a5.innerText ='Moves:'
+a5.className ='para'
+var span1 = document.createElement('span');
+span1.id = 'moves';
+a5.append(span1)
 
 
 
-var moves =document.createElement('span');
-moves.id ='moves';
-moves.innerText ='Moves:'
+div1.append(a4,a5);
 
-
-
-container.append(table,moves)
+container.append(table,div1)
 document.body.append(header,container)
 
 document.getElementById('home').addEventListener('click', home);

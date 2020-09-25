@@ -58,9 +58,10 @@ p {
     padding: 10px;
     background-color: white;
 }
-#moves{
+.para{
     font-size: 40px;
     color: black;
+  
 }
   
 .tile {
