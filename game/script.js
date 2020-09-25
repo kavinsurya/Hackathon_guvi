@@ -204,7 +204,9 @@ function moveThisTile( tableRow, tableColumn)
   if (winner())
   {
     
-   
+    setTimeout(function(){ alert("You solved the puzzle in " + moves + " moves and ");
+    window.location.href = "../index.html";
+ }, 100);
    
   }
 }

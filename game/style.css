@@ -49,6 +49,38 @@ p {
     width: 75%;
     margin: 20px auto;
 }
+
+
+
+#table{
+    width: auto;
+   margin: 10px auto;
+    padding: 10px;
+    background-color: white;
+}
+#moves{
+    font-size: 40px;
+    color: black;
+}
+  
+.tile {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    text-align: center;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    font-size: 30px;
+}
+  
+  .blank {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+
 @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) {
         display: none;
@@ -66,6 +98,17 @@ p {
         margin: 0 auto;
         width: 100%;
     }
+    .tile {
+        width: 50px;
+        height: 50px;
+      
+      }
+      
+      .blank {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+      }
 }
 
 @media screen and (max-width: 600px) {
@@ -86,3 +129,6 @@ p {
         padding-right: 10px;
     }
 }
+
+
+  
