@@ -43,6 +43,8 @@ var table =document.createElement('table');
 table.id ='table';
 
 
+
+
 var moves =document.createElement('span');
 moves.id ='moves';
 moves.innerText ='Moves:'
@@ -73,29 +75,28 @@ function myFunction() {
 
 
 function startTimer(duration, display) {
-    var timer = duration,
-        minutes, seconds;
-    setInterval(function() {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
+  var timer = duration,
+      minutes, seconds;
+  setInterval(function() {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.textContent = minutes + ":" + seconds;
+      display.textContent = minutes + ":" + seconds;
 
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
+      if (--timer < 0) {
+          timer = duration;
+      }
+  }, 1000);
 }
-
 window.onload = function() {
-    var min = 60,
+    var sec =60,
         display = document.querySelector('#time');
-    startTimer(min, display);
+       
+    startTimer(sec, display);
 };
-
 
 
 
@@ -122,8 +123,10 @@ function startNewGame()
   var randomNumber = 0;
   var count = 0;
   moves = 0;
-  rows = localStorage.getItem('size');
-  columns =localStorage.getItem('size');
+  rows =3;
+  columns =3;
+//   rows = localStorage.getItem('size');
+//   columns =localStorage.getItem('size');
   textMoves.innerHTML = moves;
   size = new Array(rows);
   for (var i = 0; i < rows; i++)
@@ -136,17 +139,17 @@ function startNewGame()
   {
     unique[i] = 0;
   }
- 
+
   for (var i = 0; i < rows * columns; i++)
   {
     randomNumber = Math.floor(Math.random()*rows * columns);
-    
+
     if (unique[randomNumber] == 0) 
     {
       unique[randomNumber] = 1;
       arrayNew.push(randomNumber);
     }
-    else 
+    else
     {
       i--;
     }
@@ -162,10 +165,116 @@ function startNewGame()
       count++;
     }
   }
+  showTable();
 }
 
-// function incrementMoves()
-// {
-//   moves++;
+function showTable()
+{
+  var outputString = "";
+  for (var i = 0; i < rows; i++)
+  {
+    outputString += "<tr>";
+    for (var j = 0; j < columns; j++)
+    {
+      if (size[i][j] == 0)
+      {
+	outputString += "<td class=\"blank\"> </td>";
+      }
+      else
+      {
+	outputString += "<td class=\"tile\" onclick=\"moveThisTile(" + i + ", " + j + ")\">" + size[i][j] + "</td>";
+      }
+    } 
+    outputString += "</tr>";
+  } 
   
-// }
+  table.innerHTML = outputString;
+}
+
+function moveThisTile( tableRow, tableColumn)
+{
+  if (check(tableRow, tableColumn, "up") ||
+      check(tableRow, tableColumn, "down") ||
+      check(tableRow, tableColumn, "left") ||
+      check(tableRow, tableColumn, "right") )
+  {
+    incrementMoves();
+  }
+  
+  if (winner())
+  {
+    
+   
+   
+  }
+}
+
+function check(row, column, direction)
+{
+
+  row1 = 0;
+  column1 = 0;
+  if (direction == "up")
+  {
+    row1 = -1;
+  }
+  else if (direction == "down")
+  {
+    row1 = 1;
+  }
+  else if (direction == "left")
+  {
+    column1 = -1;
+  }
+  else if (direction == "right")
+  {
+    column1 = 1;
+  }  
+
+  if (row + row1 >= 0 && column + column1 >= 0 &&
+    row + row1 < rows && column + column1 < columns
+  )
+  {
+    if ( size[row + row1][column + column1] == 0)
+    {
+      size[row + row1][column + column1] = size[row][column];
+      size[row][column] = 0;
+      showTable();
+      return true;
+    }
+  }
+  return false; 
+}
+
+function winner()
+{
+  var count = 1;
+  for (var i = 0; i < rows; i++)
+  {
+    for (var j = 0; j < columns; j++)
+    {
+      if (size[i][j] != count)
+      {
+	if ( !(count === rows * columns && size[i][j] === 0 ))
+	{
+	  return false;
+	}
+      }
+      count++;
+    }
+  }
+  
+  return true;
+}
+
+function incrementMoves()
+{
+  moves++;
+  if (textMoves) 
+    {
+    textMoves.innerHTML = moves;
+  }
+}
+
+
+window.addEventListener( "load", start, false ); 
