@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 body {
-    background-color: blue;
+    background: #6699ff;
 }
 
 #container {
@@ -31,11 +31,6 @@ body {
     transition: 0.3s;
     width: 50%;
 }
-
-
-/* .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-} */
 
 .content-1 {
     padding: 15px;
