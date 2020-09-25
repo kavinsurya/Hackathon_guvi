@@ -96,7 +96,7 @@ p {
         background-color: ivory;
     }
     #table {
-        margin: 0 auto;
+        margin: 5px auto;
         width: 100%;
     }
     .tile {
@@ -110,6 +110,11 @@ p {
         height: 50px;
         text-align: center;
       }
+      .para{
+        font-size: 20px;
+        color: black;
+      
+    }
 }
 
 @media screen and (max-width: 600px) {
