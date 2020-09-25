@@ -61,6 +61,7 @@ p {
 .para{
     font-size: 40px;
     color: black;
+    cursor: default;
   
 }
   
@@ -111,8 +112,10 @@ p {
         text-align: center;
       }
       .para{
+        cursor: default;
         font-size: 20px;
         color: black;
+       
       
     }
 }
