@@ -52,7 +52,6 @@ span1.id = "moves";
 a5.append(span1);
 
 div1.append(a4, a5);
-
 container.append(table, div1);
 document.body.append(header, container);
 
@@ -62,7 +61,7 @@ document.getElementById("nav").addEventListener("click", myFunction);
 function home() {
   window.location.href = "../index.html";
 }
-
+//Navbar Responsive
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -72,6 +71,7 @@ function myFunction() {
   }
 }
 
+//Timer
 function startTimer() {
   var timer = 0;
   var minutes;
@@ -115,6 +115,7 @@ function start() {
   startTimer();
 }
 
+//Start new Game
 function startNewGame() {
   var arrayNew = new Array();
   var unique;
@@ -153,6 +154,7 @@ function startNewGame() {
   showTable();
 }
 
+//Tp show the Values
 function showTable() {
   var outputString = "";
   for (var i = 0; i < rows; i++) {
@@ -177,6 +179,8 @@ function showTable() {
   table.innerHTML = outputString;
 }
 
+
+//Moving the tile respect to user's input
 function moveThisTile(tableRow, tableColumn) {
   if (
     check(tableRow, tableColumn, "up") ||
@@ -186,7 +190,7 @@ function moveThisTile(tableRow, tableColumn) {
   ) {
     incrementMoves();
   }
-
+//For every move the game completion has been checKed
   if (winner()) {
     var score = 0;
     if (moves <= 5) {
@@ -239,7 +243,7 @@ function check(row, column, direction) {
   }
   return false;
 }
-
+//Checking whether the user has completed the puzzle
 function winner() {
   var count = 1;
   for (var i = 0; i < rows; i++) {
@@ -256,6 +260,7 @@ function winner() {
   return true;
 }
 
+//Function to increase the moves
 function incrementMoves() {
   moves++;
   if (textMoves) {
