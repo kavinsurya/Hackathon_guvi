@@ -71,12 +71,14 @@ function myFunction() {
   }
 }
 
+var timer = 0;
+var minutes;
+var seconds;
+var sec = 59;
+
 //Timer
 function startTimer() {
-  var timer = 0;
-  var minutes;
-  var seconds;
-  var sec = 59;
+ 
   (timer = sec), minutes, seconds;
   setInterval(function () {
     minutes = parseInt(timer / 60, 10);
@@ -209,7 +211,7 @@ function moveThisTile(tableRow, tableColumn) {
     console.log(seconds);
 
     setTimeout(function () {
-      alert("You solved the puzzle and your score is" + result);
+      alert("You solved the puzzle and your score is" +" "+ result);
       window.location.href = "../index.html";
     }, 100);
   }
